@@ -43,13 +43,16 @@ function getDigitSum(num) {
 
 app.get("/", async (req, res) => {
     const num = parseInt(req.query.num); // Expecting the number as a query parameter, e.g., ?num=5
+    console.log(num)
+    
 
     if (isNaN(num)) {
         return res.status(400).json({ error: 'Invalid number parameter', status: 400 });
     }
 
     try {
-        const funFact = await getFunFact(num);
+        const response = await axios.get(`http://numbersapi.com/${num}?json`);
+        funFact = response.data.text;
         const result = {
             number: num,
             is_prime: isPrime(num),
