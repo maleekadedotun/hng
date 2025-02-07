@@ -41,18 +41,18 @@ function getDigitSum(num) {
     return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
-// app.get("/", (req, res) =>{
-//    try {
+app.get("/", (req, res) =>{
+   try {
    
-//     res.json("Working successsfully")
-//    } catch (error) {
-//     res.json({
-//         error: error,
-//         status: 400,
-//     })
-//    }
+    res.json("Working successsfully")
+   } catch (error) {
+    res.json({
+        error: error,
+        status: 400,
+    })
+   }
     
-// })
+})
 
 // API endpoint to classify numberss
 app.get('/api/classify-number', async (req, res) => {
