@@ -41,18 +41,31 @@ function getDigitSum(num) {
     return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
-app.get("/", (req, res) =>{
-   try {
-   
-    res.json("Working successsfully")
-   } catch (error) {
-    res.json({
-        error: error,
-        status: 400,
-    })
-   }
-    
-})
+app.get("/", async (req, res) => {
+    const num = parseInt(req.query.num); // Expecting the number as a query parameter, e.g., ?num=5
+
+    if (isNaN(num)) {
+        return res.status(400).json({ error: 'Invalid number parameter', status: 400 });
+    }
+
+    try {
+        const funFact = await getFunFact(num);
+        const result = {
+            number: num,
+            is_prime: isPrime(num),
+            is_perfect: isPerfect(num),
+            digit_sum: getDigitSum(num),
+            fun_fact: funFact,
+        };
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+            status: 500,
+        });
+    }
+});
 
 // API endpoint to classify numberss
 app.get('/api/classify-number', async (req, res) => {
