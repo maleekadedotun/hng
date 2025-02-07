@@ -41,25 +41,18 @@ function getDigitSum(num) {
     return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
-app.get("/", (req, res) =>{
-   try {
-    const result = {
-        number: num,
-        is_prime: isPrime(num),
-        is_perfect: isPerfect(num),
-        properties: properties,
-        digit_sum: getDigitSum(num),
-        fun_fact: funFact,
-    };
-    res.json(result)
-   } catch (error) {
-    res.json({
-        error: error,
-        status: 400,
-    })
-   }
+// app.get("/", (req, res) =>{
+//    try {
+   
+//     res.json("Working successsfully")
+//    } catch (error) {
+//     res.json({
+//         error: error,
+//         status: 400,
+//     })
+//    }
     
-})
+// })
 
 // API endpoint to classify number
 app.get('/api/classify-number', async (req, res) => {
