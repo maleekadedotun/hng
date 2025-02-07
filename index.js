@@ -54,7 +54,7 @@ function getDigitSum(num) {
     
 // })
 
-// API endpoint to classify number
+// API endpoint to classify numberss
 app.get('/api/classify-number', async (req, res) => {
     const { number } = req.query;
 
