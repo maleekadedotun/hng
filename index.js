@@ -41,39 +41,39 @@ function getDigitSum(num) {
     return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
-app.get("/", async (req, res) => {
-    const num = parseInt(req.query.num()); // Expecting the number as a query parameter, e.g., ?num=5
-    console.log(num)
+// app.get("/", async (req, res) => {
+//     const num = parseInt(req.query.num); // Expecting the number as a query parameter, e.g., ?num=5
+//     console.log(num)
    
     
 
-    if (isNaN(num)) {
-        return res.status(400).json({ error: 'Invalid number parameter', status: 400 });
-    }
+//     if (isNaN(num)) {
+//         return res.status(400).json({ error: 'Invalid number parameter', status: 400 });
+//     }
 
-    try {
-        // const response = await axios.get(`http://numbersapi.com/${num}?json`);
-        // funFact = response.data.text;
+//     try {
+//         // const response = await axios.get(`http://numbersapi.com/${num}?json`);
+//         // funFact = response.data.text;
         
-        const result = {
-            number: num,
-            is_prime: isPrime(num),
-            is_perfect: isPerfect(num),
-            digit_sum: getDigitSum(num),
-            fun_fact: funFact,
-        };
+//         const result = {
+//             number: num,
+//             is_prime: isPrime(num),
+//             is_perfect: isPerfect(num),
+//             digit_sum: getDigitSum(num),
+//             fun_fact: funFact,
+//         };
         
-        res.json(result);
-    } catch (error) {
-        res.status(500).json({
-            error: error.message,
-            status: 500,
-        });
-    }
-});
+//         res.json(result);
+//     } catch (error) {
+//         res.status(500).json({
+//             error: error.message,
+//             status: 500,
+//         });
+//     }
+// });
 
 // API endpoint to classify numberss
-app.get('/api/classify-number', async (req, res) => {
+app.get('/', async (req, res) => {
     const { number } = req.query;
 
     // Check if the input is a valid integer
