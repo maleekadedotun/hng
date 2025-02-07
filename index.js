@@ -41,6 +41,13 @@ function getDigitSum(num) {
     return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
+app.get("/", async(req, res) =>{
+    const response = await axios.get(`http://numbersapi.com/${num}?json`);
+    funFact = response.data.text;
+    res.json(funFact, "working")
+    // res.send("working")
+})
+
 // app.get("/", async (req, res) => {
 //     const num = parseInt(req.query.num); // Expecting the number as a query parameter, e.g., ?num=5
 //     console.log(num)
@@ -73,7 +80,7 @@ function getDigitSum(num) {
 // });
 
 // API endpoint to classify numberss
-app.get('/', async (req, res) => {
+app.get('/api/classify-number', async (req, res) => {
     const { number } = req.query;
 
     // Check if the input is a valid integer
