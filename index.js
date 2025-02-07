@@ -42,7 +42,7 @@ function getDigitSum(num) {
 }
 
 app.get("/", async (req, res) => {
-    const num = parseInt(req.query.num); // Expecting the number as a query parameter, e.g., ?num=5
+    const num = parseInt(req.query.num.Number()); // Expecting the number as a query parameter, e.g., ?num=5
     console.log(num)
    
     
@@ -52,8 +52,8 @@ app.get("/", async (req, res) => {
     }
 
     try {
-        const response = await axios.get(`http://numbersapi.com/${num}?json`);
-        funFact = response.data.text;
+        // const response = await axios.get(`http://numbersapi.com/${num}?json`);
+        // funFact = response.data.text;
         
         const result = {
             number: num,
